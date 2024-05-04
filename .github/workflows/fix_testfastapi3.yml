@@ -39,6 +39,7 @@ jobs:
           name: python-app
           path: |
             src/
+            src/utils/
             !venv/
 
   deploy:
