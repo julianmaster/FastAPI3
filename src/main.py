@@ -2,9 +2,9 @@ import json
 
 from fastapi import FastAPI
 
-from src.utils.setup_model import download_model
-from src.utils.model_trained import model_prediction
-from src.utils.sentence_prediction import process_sentence, from_str_to_list, tags
+from utils.setup_model import download_model
+from utils.model_trained import model_prediction
+from utils.sentence_prediction import process_sentence, from_str_to_list, tags
 
 app = FastAPI(
     title="FastAPI3",
