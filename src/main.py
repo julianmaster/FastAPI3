@@ -1,18 +1,22 @@
-from fastapi import FastAPI
 import json
 
-import os
-print(os.getcwd())
- 
-from src.utils.sentence_prediction import process_sentence, from_str_to_list, tags
+from fastapi import FastAPI
+
+from src.utils.setup_model import download_model
 from src.utils.model_trained import model_prediction
-from src.utils.embedding import use_embed
+from src.utils.sentence_prediction import process_sentence, from_str_to_list, tags
 
-app = FastAPI()
+app = FastAPI(
+    title="FastAPI3",
+    description="Hello API developer!",
+    version="0.1.0"
+)
+
+model = download_model()
 
 
-@app.get("/greet")
-async def greet():
+@app.get("/")
+async def main():
     return {"message": "Hello World !"}
 
 
@@ -30,11 +34,10 @@ async def prediction(sentence: dict):
 
     list_sentence = from_str_to_list(result_string)
 
-    #embedded_sentence = use_embed(list_sentence)
+    embedded_sentence = model(list_sentence)
 
-    #model_output = model_prediction(embedded_sentence)
+    model_output = model_prediction(embedded_sentence)
 
-    #tags_result = tags(model_output)
+    tags_result = tags(model_output)
 
-    #return tags_result
-    return "test"
+    return tags_result

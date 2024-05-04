@@ -1,9 +1,0 @@
-[tool.poetry]
-name = "projet5"
-version = "1.0.0"
-description = ""
-authors = ["Tom <tom.menard17n@gmail.com>"]
-packages = []
-
-[tool.pytest.ini_options]
-pythonpath = ["src", "."]
